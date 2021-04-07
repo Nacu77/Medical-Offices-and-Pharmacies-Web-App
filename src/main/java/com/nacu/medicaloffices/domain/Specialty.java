@@ -1,16 +1,16 @@
-package com.nacu.medicaloffices.model;
+package com.nacu.medicaloffices.domain;
 
 import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 public class Specialty extends BaseEntity {
 
@@ -23,6 +23,6 @@ public class Specialty extends BaseEntity {
     public Specialty(Long id, String name, Set<MedicalOffice> medicalOffices) {
         super(id);
         this.name = name;
-        this.medicalOffices = medicalOffices;
+        this.medicalOffices = Objects.requireNonNullElseGet(medicalOffices, HashSet::new);;
     }
 }

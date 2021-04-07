@@ -1,15 +1,15 @@
-package com.nacu.medicaloffices.model;
+package com.nacu.medicaloffices.domain;
 
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 public class Recipe extends BaseEntity {
 
@@ -31,7 +31,7 @@ public class Recipe extends BaseEntity {
     public Recipe(Long id, String description, Set<Medicine> medicines, Patient patient) {
         super(id);
         this.description = description;
-        this.medicines = medicines;
+        this.medicines = Objects.requireNonNullElseGet(medicines, HashSet::new);;
         this.patient = patient;
     }
 }

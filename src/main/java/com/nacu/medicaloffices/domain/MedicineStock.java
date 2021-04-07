@@ -1,4 +1,4 @@
-package com.nacu.medicaloffices.model;
+package com.nacu.medicaloffices.domain;
 
 import lombok.*;
 
@@ -9,9 +9,8 @@ import javax.persistence.ManyToOne;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
-public class PharmacyMedicine extends BaseEntity {
+public class MedicineStock extends BaseEntity {
 
     private int amount;
     private double price;
@@ -25,7 +24,7 @@ public class PharmacyMedicine extends BaseEntity {
     private Medicine medicine;
 
     @Builder
-    public PharmacyMedicine(Long id, int amount, double price, Pharmacy pharmacy, Medicine medicine) {
+    public MedicineStock(Long id, int amount, double price, Pharmacy pharmacy, Medicine medicine) {
         super(id);
         this.amount = amount;
         this.price = price;

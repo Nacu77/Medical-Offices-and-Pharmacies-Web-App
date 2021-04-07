@@ -1,4 +1,4 @@
-package com.nacu.medicaloffices.model;
+package com.nacu.medicaloffices.domain;
 
 import lombok.*;
 
@@ -7,10 +7,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 public class Appointment extends BaseEntity {
 

@@ -1,20 +1,19 @@
-package com.nacu.medicaloffices.model;
+package com.nacu.medicaloffices.domain;
 
 import lombok.*;
 
 import javax.persistence.Entity;
 
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
-public class Medicine extends BaseEntity {
+public class Service extends BaseEntity {
 
     private String name;
 
     @Builder
-    public Medicine(Long id, String name) {
+    public Service(Long id, String name) {
         super(id);
         this.name = name;
     }

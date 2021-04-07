@@ -1,15 +1,15 @@
-package com.nacu.medicaloffices.model;
+package com.nacu.medicaloffices.domain;
 
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 public class MedicalOffice extends BaseEntity {
 
@@ -32,25 +32,25 @@ public class MedicalOffice extends BaseEntity {
     private Schedule schedule;
 
     @OneToMany(mappedBy = "medicalOffice", cascade = CascadeType.ALL)
-    private Set<OfficeService> services = new HashSet<>();
+    private Set<ServicePrice> servicesPrice = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "specialty_id")
     private Specialty specialty;
 
     @OneToMany(mappedBy = "medicalOffice", cascade = CascadeType.ALL)
-    private Set<Appointment> appointments;
+    private Set<Appointment> appointments = new HashSet<>();
 
     @Builder
-    public MedicalOffice(Long id, String name, Doctor doctor, ContactData contactData, Address address, Schedule schedule, Set<OfficeService> services, Specialty specialty, Set<Appointment> appointments) {
+    public MedicalOffice(Long id, String name, Doctor doctor, ContactData contactData, Address address, Schedule schedule, Set<ServicePrice> services, Specialty specialty, Set<Appointment> appointments) {
         super(id);
         this.name = name;
         this.doctor = doctor;
         this.contactData = contactData;
         this.address = address;
         this.schedule = schedule;
-        this.services = services;
+        this.servicesPrice = Objects.requireNonNullElseGet(services, HashSet::new);
         this.specialty = specialty;
-        this.appointments = appointments;
+        this.appointments = Objects.requireNonNullElseGet(appointments, HashSet::new);;
     }
 }

@@ -1,17 +1,19 @@
-package com.nacu.medicaloffices.model;
+package com.nacu.medicaloffices.domain;
 
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 public class Pharmacy extends BaseEntity {
+
+    private String name;
 
     @ManyToOne
     @JoinColumn(name = "owner_id")
@@ -26,14 +28,15 @@ public class Pharmacy extends BaseEntity {
     private Address address;
 
     @OneToMany(mappedBy = "pharmacy", cascade = CascadeType.ALL)
-    private Set<PharmacyMedicine> medicineStock = new HashSet<>();
+    private Set<MedicineStock> medicinesStock = new HashSet<>();
 
     @Builder
-    public Pharmacy(Long id, PharmacyOwner pharmacyOwner, ContactData contactData, Address address, Set<PharmacyMedicine> medicineStock) {
+    public Pharmacy(Long id, String name, PharmacyOwner pharmacyOwner, ContactData contactData, Address address, Set<MedicineStock> medicineStock) {
         super(id);
+        this.name = name;
         this.pharmacyOwner = pharmacyOwner;
         this.contactData = contactData;
         this.address = address;
-        this.medicineStock = medicineStock;
+        this.medicinesStock = Objects.requireNonNullElseGet(medicineStock, HashSet::new);;
     }
 }

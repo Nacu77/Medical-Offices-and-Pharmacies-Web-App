@@ -1,9 +1,6 @@
-package com.nacu.medicaloffices.model;
+package com.nacu.medicaloffices.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -12,9 +9,8 @@ import javax.persistence.ManyToOne;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
-public class OfficeService extends BaseEntity {
+public class ServicePrice extends BaseEntity {
 
     private double price;
 

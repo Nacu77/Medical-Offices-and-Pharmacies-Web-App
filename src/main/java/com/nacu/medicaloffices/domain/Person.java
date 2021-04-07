@@ -1,9 +1,6 @@
-package com.nacu.medicaloffices.model;
+package com.nacu.medicaloffices.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.CascadeType;
 import javax.persistence.JoinColumn;
@@ -13,7 +10,6 @@ import javax.persistence.OneToOne;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @MappedSuperclass
 public class Person extends BaseEntity {
 
@@ -23,4 +19,11 @@ public class Person extends BaseEntity {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "contact_id")
     private ContactData contactData;
+
+    public Person(Long id, String firstName, String lastName, ContactData contactData) {
+        super(id);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.contactData = contactData;
+    }
 }

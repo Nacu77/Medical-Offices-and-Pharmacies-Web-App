@@ -1,13 +1,13 @@
-package com.nacu.medicaloffices.model;
+package com.nacu.medicaloffices.domain;
 
 import lombok.*;
 
 import javax.persistence.Entity;
 
-@Setter
 @Getter
+@Setter
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 public class ContactData extends BaseEntity {
 

@@ -1,4 +1,4 @@
-package com.nacu.medicaloffices.model;
+package com.nacu.medicaloffices.domain;
 
 import lombok.*;
 
@@ -6,11 +6,11 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
-@Setter
 @Getter
-@AllArgsConstructor
+@Setter
 @NoArgsConstructor
 @Entity
 public class Patient extends Person {
@@ -22,9 +22,9 @@ public class Patient extends Person {
     private Set<Appointment> appointments = new HashSet<>();
 
     @Builder
-    public Patient(String firstName, String lastName, ContactData contactData, Set<Recipe> recipes, Set<Appointment> appointments) {
-        super(firstName, lastName, contactData);
-        this.recipes = recipes;
-        this.appointments = appointments;
+    public Patient(Long id, String firstName, String lastName, ContactData contactData, Set<Recipe> recipes, Set<Appointment> appointments) {
+        super(id, firstName, lastName, contactData);
+        this.recipes = Objects.requireNonNullElseGet(recipes, HashSet::new);
+        this.appointments = Objects.requireNonNullElseGet(appointments, HashSet::new);
     }
 }
