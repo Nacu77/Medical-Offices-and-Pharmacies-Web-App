@@ -13,13 +13,13 @@ public class PharmacyDTO {
     private String name;
     private ContactDataDTO contactData;
     private AddressDTO address;
-    private List<MedicineStockDTO> medicinesStock;
+    private List<MedicineStockDTO> medicineStock;
 
     @Builder
-    public PharmacyDTO(String name, ContactDataDTO contactData, AddressDTO address, List<MedicineStockDTO> medicinesStock) {
+    public PharmacyDTO(String name, ContactDataDTO contactData, AddressDTO address, List<MedicineStockDTO> medicineStock) {
         this.name = name;
         this.contactData = contactData;
         this.address = address;
-        this.medicinesStock = medicinesStock;
+        this.medicineStock = medicineStock;
     }
 }

@@ -28,7 +28,7 @@ public class Pharmacy extends BaseEntity {
     private Address address;
 
     @OneToMany(mappedBy = "pharmacy", cascade = CascadeType.ALL)
-    private Set<MedicineStock> medicinesStock = new HashSet<>();
+    private Set<MedicineStock> medicineStock = new HashSet<>();
 
     @Builder
     public Pharmacy(Long id, String name, PharmacyOwner pharmacyOwner, ContactData contactData, Address address, Set<MedicineStock> medicineStock) {
@@ -37,6 +37,6 @@ public class Pharmacy extends BaseEntity {
         this.pharmacyOwner = pharmacyOwner;
         this.contactData = contactData;
         this.address = address;
-        this.medicinesStock = Objects.requireNonNullElseGet(medicineStock, HashSet::new);;
+        this.medicineStock = Objects.requireNonNullElseGet(medicineStock, HashSet::new);
     }
 }

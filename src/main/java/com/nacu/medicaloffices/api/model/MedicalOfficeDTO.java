@@ -4,6 +4,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 public class MedicalOfficeDTO {
@@ -11,15 +13,17 @@ public class MedicalOfficeDTO {
     private String name;
     private ContactDataDTO contactData;
     private AddressDTO address;
-    private ScheduleDTO scheduleDTO;
+    private ScheduleDTO schedule;
     private SpecialtyDTO specialty;
+    private List<AppointmentDTO> appointments;
 
     @Builder
-    public MedicalOfficeDTO(String name, ContactDataDTO contactData, AddressDTO address, ScheduleDTO scheduleDTO, SpecialtyDTO specialty) {
+    public MedicalOfficeDTO(String name, ContactDataDTO contactData, AddressDTO address, ScheduleDTO schedule, SpecialtyDTO specialty, List<AppointmentDTO> appointments) {
         this.name = name;
         this.contactData = contactData;
         this.address = address;
-        this.scheduleDTO = scheduleDTO;
+        this.schedule = schedule;
         this.specialty = specialty;
+        this.appointments = appointments;
     }
 }

@@ -150,8 +150,8 @@ public class DataLoader implements CommandLineRunner {
                         .price(12.50)
                         .build();
 
-        pharmacy.getMedicinesStock().add(medicineStock1);
-        pharmacy.getMedicinesStock().add(medicineStock2);
+        pharmacy.getMedicineStock().add(medicineStock1);
+        pharmacy.getMedicineStock().add(medicineStock2);
 
         pharmacyOwner.getPharmacies().add(pharmacy);
 
