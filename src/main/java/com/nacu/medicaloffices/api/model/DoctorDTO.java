@@ -10,13 +10,15 @@ import java.util.List;
 @NoArgsConstructor
 public class DoctorDTO {
 
+    private Long id;
     private String firstName;
     private String lastName;
     private ContactDataDTO contactData;
     private List<MedicalOfficeDTO> medicalOffices;
 
     @Builder
-    public DoctorDTO(String firstName, String lastName, ContactDataDTO contactData, List<MedicalOfficeDTO> medicalOffices) {
+    public DoctorDTO(Long id, String firstName, String lastName, ContactDataDTO contactData, List<MedicalOfficeDTO> medicalOffices) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.contactData = contactData;

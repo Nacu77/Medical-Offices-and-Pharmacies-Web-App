@@ -5,7 +5,7 @@ import com.nacu.medicaloffices.domain.Schedule;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface ScheduleMapper {
     ScheduleMapper INSTANCE = Mappers.getMapper(ScheduleMapper.class);
     ScheduleDTO scheduleToScheduleDTO(Schedule schedule);

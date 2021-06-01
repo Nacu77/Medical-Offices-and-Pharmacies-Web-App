@@ -14,48 +14,48 @@ import java.util.stream.Collectors;
 @Service
 public class MedicineServiceImpl implements MedicineService {
 
-    private final MedicineRepository medicineRepository;
-    private final MedicineMapper medicineMapper;
+    private final MedicineRepository repository;
+    private final MedicineMapper mapper;
 
-    public MedicineServiceImpl(MedicineRepository medicineRepository, MedicineMapper medicineMapper) {
-        this.medicineRepository = medicineRepository;
-        this.medicineMapper = medicineMapper;
+    public MedicineServiceImpl(MedicineRepository repository, MedicineMapper mapper) {
+        this.repository = repository;
+        this.mapper = mapper;
     }
 
     @Override
     public List<MedicineDTO> findAll() {
-        return medicineRepository
+        return repository
                 .findAll()
                 .stream()
-                .map(medicineMapper::medicineToMedicineDTO)
+                .map(mapper::medicineToMedicineDTO)
                 .collect(Collectors.toList());
     }
 
     @Override
     public MedicineDTO findById(Long id) {
-        return medicineRepository
+        return repository
                 .findById(id)
-                .map(medicineMapper::medicineToMedicineDTO)
+                .map(mapper::medicineToMedicineDTO)
                 .orElseThrow(ResourceNotFoundException::new);
     }
 
     @Override
     public MedicineDTO create(MedicineDTO medicineDTO) {
-        Medicine medicine = medicineMapper.medicineDTOtoMedicine(medicineDTO);
-        Medicine savedMedicine = medicineRepository.save(medicine);
-        return medicineMapper.medicineToMedicineDTO(savedMedicine);
+        Medicine medicine = mapper.medicineDTOtoMedicine(medicineDTO);
+        Medicine savedMedicine = repository.save(medicine);
+        return mapper.medicineToMedicineDTO(savedMedicine);
     }
 
     @Override
     public MedicineDTO saveById(Long id, MedicineDTO medicineDTO) {
-        Medicine medicine = medicineMapper.medicineDTOtoMedicine(medicineDTO);
+        Medicine medicine = mapper.medicineDTOtoMedicine(medicineDTO);
         medicine.setId(id);
-        Medicine savedMedicine = medicineRepository.save(medicine);
-        return medicineMapper.medicineToMedicineDTO(savedMedicine);
+        Medicine savedMedicine = repository.save(medicine);
+        return mapper.medicineToMedicineDTO(savedMedicine);
     }
 
     @Override
     public void deleteById(Long id) {
-        medicineRepository.deleteById(id);
+        repository.deleteById(id);
     }
 }

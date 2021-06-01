@@ -113,9 +113,18 @@ public class DataLoader implements CommandLineRunner {
         doctor.getMedicalOffices().add(medicalOffice1);
         doctor.getMedicalOffices().add(medicalOffice2);
 
-        Medicine medicine1 = Medicine.builder().name("Paracetamol").build();
-        Medicine medicine2 = Medicine.builder().name("Nurofen").build();
-        Medicine medicine3 = Medicine.builder().name("Aspirin").build();
+        Medicine medicine1 = Medicine.builder().name("Paracetamol").imageUrl("https://static.apoteca-farmacie.ro/assets/img/p/1446816-12085-large.jpg").build();
+        Medicine medicine2 = Medicine.builder().name("Nurofen").imageUrl("https://media-services.digital-rb.com/s3/live-productcatalogue/sys-master/images/heb/hd6/8869324357662/RBL1902106_Nurofen%20200%20mg%20tabs_carton%2012_fata07C%20Pack_Simulation.png").build();
+        Medicine medicine3 = Medicine.builder().name("Aspirin").imageUrl("https://www.pilulka.ro/assets/image/2020-03/1584638093-aspirin-cardio-100-mg-28-comprimate-gastrorezistente.jpg?v=1584638093").build();
+        Medicine medicine4 = Medicine.builder().name("Paracetamol").imageUrl("https://static.apoteca-farmacie.ro/assets/img/p/1446816-12085-large.jpg").build();
+        Medicine medicine5 = Medicine.builder().name("Nurofen").imageUrl("https://media-services.digital-rb.com/s3/live-productcatalogue/sys-master/images/heb/hd6/8869324357662/RBL1902106_Nurofen%20200%20mg%20tabs_carton%2012_fata07C%20Pack_Simulation.png").build();
+        Medicine medicine6 = Medicine.builder().name("Aspirin").imageUrl("https://www.pilulka.ro/assets/image/2020-03/1584638093-aspirin-cardio-100-mg-28-comprimate-gastrorezistente.jpg?v=1584638093").build();
+        Medicine medicine7 = Medicine.builder().name("Paracetamol").imageUrl("https://static.apoteca-farmacie.ro/assets/img/p/1446816-12085-large.jpg").build();
+        Medicine medicine8 = Medicine.builder().name("Nurofen").imageUrl("https://media-services.digital-rb.com/s3/live-productcatalogue/sys-master/images/heb/hd6/8869324357662/RBL1902106_Nurofen%20200%20mg%20tabs_carton%2012_fata07C%20Pack_Simulation.png").build();
+        Medicine medicine9 = Medicine.builder().name("Aspirin").imageUrl("https://www.pilulka.ro/assets/image/2020-03/1584638093-aspirin-cardio-100-mg-28-comprimate-gastrorezistente.jpg?v=1584638093").build();
+        Medicine medicine10 = Medicine.builder().name("Paracetamol").imageUrl("https://static.apoteca-farmacie.ro/assets/img/p/1446816-12085-large.jpg").build();
+        Medicine medicine11 = Medicine.builder().name("Nurofen").imageUrl("https://media-services.digital-rb.com/s3/live-productcatalogue/sys-master/images/heb/hd6/8869324357662/RBL1902106_Nurofen%20200%20mg%20tabs_carton%2012_fata07C%20Pack_Simulation.png").build();
+        Medicine medicine12 = Medicine.builder().name("Aspirin").imageUrl("https://www.pilulka.ro/assets/image/2020-03/1584638093-aspirin-cardio-100-mg-28-comprimate-gastrorezistente.jpg?v=1584638093").build();
 
         Recipe recipe =
                 Recipe.builder()
@@ -126,7 +135,7 @@ public class DataLoader implements CommandLineRunner {
 
         patient.getRecipes().add(recipe);
 
-        Pharmacy pharmacy =
+        Pharmacy pharmacy1 =
                 Pharmacy.builder()
                         .name("Catena")
                         .pharmacyOwner(pharmacyOwner)
@@ -134,9 +143,17 @@ public class DataLoader implements CommandLineRunner {
                         .contactData(ContactData.builder().email("catena@gmail.com").phoneNumber("0761234532").build())
                         .build();
 
+        Pharmacy pharmacy2 =
+                Pharmacy.builder()
+                        .name("Farmacia Bucuria")
+                        .pharmacyOwner(pharmacyOwner)
+                        .address(Address.builder().country("Romania").city("Galati").street("Calea Sarpelui").number(143).build())
+                        .contactData(ContactData.builder().email("bucur@gmail.com").phoneNumber("0761234312").build())
+                        .build();
+
         MedicineStock medicineStock1 =
                 MedicineStock.builder()
-                        .pharmacy(pharmacy)
+                        .pharmacy(pharmacy1)
                         .medicine(medicine2)
                         .amount(312)
                         .price(30.20)
@@ -144,16 +161,20 @@ public class DataLoader implements CommandLineRunner {
 
         MedicineStock medicineStock2 =
                 MedicineStock.builder()
-                        .pharmacy(pharmacy)
+                        .pharmacy(pharmacy1)
                         .medicine(medicine3)
-                        .amount(1312)
-                        .price(12.50)
+                        .amount(1310)
+                        .price(40)
                         .build();
 
-        pharmacy.getMedicineStock().add(medicineStock1);
-        pharmacy.getMedicineStock().add(medicineStock2);
+        pharmacy1.getMedicineStock().add(medicineStock1);
+        pharmacy1.getMedicineStock().add(medicineStock2);
 
-        pharmacyOwner.getPharmacies().add(pharmacy);
+        pharmacy2.getMedicineStock().add(medicineStock1);
+        pharmacy2.getMedicineStock().add(medicineStock2);
+
+        pharmacyOwner.getPharmacies().add(pharmacy1);
+        pharmacyOwner.getPharmacies().add(pharmacy2);
 
         Appointment appointment =
                 Appointment.builder()
@@ -171,6 +192,15 @@ public class DataLoader implements CommandLineRunner {
         medicineRepository.save(medicine1);
         medicineRepository.save(medicine2);
         medicineRepository.save(medicine3);
+        medicineRepository.save(medicine4);
+        medicineRepository.save(medicine5);
+        medicineRepository.save(medicine6);
+        medicineRepository.save(medicine7);
+        medicineRepository.save(medicine8);
+        medicineRepository.save(medicine9);
+        medicineRepository.save(medicine10);
+        medicineRepository.save(medicine11);
+        medicineRepository.save(medicine12);
 
         doctorRepository.save(doctor);
         patientRepository.save(patient);

@@ -10,10 +10,12 @@ public class MedicineDTO {
 
     private Long id;
     private String name;
+    private String imageUrl;
 
     @Builder
-    public MedicineDTO(Long id, String name) {
+    public MedicineDTO(Long id, String name, String imageUrl) {
         this.id = id;
         this.name = name;
+        this.imageUrl = imageUrl;
     }
 }

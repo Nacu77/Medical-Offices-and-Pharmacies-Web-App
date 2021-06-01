@@ -10,6 +10,8 @@ import java.time.LocalTime;
 @NoArgsConstructor
 public class ScheduleDTO {
 
+    private Long id;
+
     private LocalTime mondayStart;
     private LocalTime mondayEnd;
 
@@ -32,7 +34,8 @@ public class ScheduleDTO {
     private LocalTime sundayEnd;
 
     @Builder
-    public ScheduleDTO(LocalTime mondayStart, LocalTime mondayEnd, LocalTime tuesdayStart, LocalTime tuesdayEnd, LocalTime wednesdayStart, LocalTime wednesdayEnd, LocalTime thursdayStart, LocalTime thursdayEnd, LocalTime fridayStart, LocalTime fridayEnd, LocalTime saturdayStart, LocalTime saturdayEnd, LocalTime sundayStart, LocalTime sundayEnd) {
+    public ScheduleDTO(Long id, LocalTime mondayStart, LocalTime mondayEnd, LocalTime tuesdayStart, LocalTime tuesdayEnd, LocalTime wednesdayStart, LocalTime wednesdayEnd, LocalTime thursdayStart, LocalTime thursdayEnd, LocalTime fridayStart, LocalTime fridayEnd, LocalTime saturdayStart, LocalTime saturdayEnd, LocalTime sundayStart, LocalTime sundayEnd) {
+        this.id = id;
         this.mondayStart = mondayStart;
         this.mondayEnd = mondayEnd;
         this.tuesdayStart = tuesdayStart;

@@ -5,7 +5,7 @@ import com.nacu.medicaloffices.domain.ContactData;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface ContactDataMapper {
     ContactDataMapper INSTANCE = Mappers.getMapper(ContactDataMapper.class);
     ContactDataDTO contactDataToContactDataDTO(ContactData contactData);

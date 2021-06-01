@@ -5,7 +5,10 @@ import com.nacu.medicaloffices.domain.MedicineStock;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(uses = {MedicineMapper.class})
+@Mapper(
+        uses = {MedicineMapper.class},
+        componentModel = "spring"
+)
 public interface MedicineStockMapper {
     MedicineStockMapper INSTANCE = Mappers.getMapper(MedicineStockMapper.class);
     MedicineStockDTO medicineStockToMedicineStockDTO(MedicineStock medicineStock);

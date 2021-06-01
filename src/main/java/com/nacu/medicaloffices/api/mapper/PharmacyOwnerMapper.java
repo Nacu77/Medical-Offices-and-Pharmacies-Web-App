@@ -5,7 +5,10 @@ import com.nacu.medicaloffices.domain.PharmacyOwner;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(uses = {ContactDataMapper.class, PharmacyMapper.class})
+@Mapper(
+        uses = {ContactDataMapper.class, PharmacyMapper.class},
+        componentModel = "spring"
+)
 public interface PharmacyOwnerMapper {
     PharmacyOwnerMapper INSTANCE = Mappers.getMapper(PharmacyOwnerMapper.class);
     PharmacyOwnerDTO pharmacyOwnerToPharmacyOwnerDTO(PharmacyOwner pharmacyOwner);

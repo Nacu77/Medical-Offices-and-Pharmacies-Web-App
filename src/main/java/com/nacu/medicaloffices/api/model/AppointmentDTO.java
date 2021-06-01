@@ -10,11 +10,13 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class AppointmentDTO {
 
+    private Long id;
     private String description;
     private LocalDateTime date;
 
     @Builder
-    public AppointmentDTO(String description, LocalDateTime date) {
+    public AppointmentDTO(Long id, String description, LocalDateTime date) {
+        this.id = id;
         this.description = description;
         this.date = date;
     }

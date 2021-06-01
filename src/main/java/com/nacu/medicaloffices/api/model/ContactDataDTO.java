@@ -8,11 +8,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ContactDataDTO {
 
+    private Long id;
     private String phoneNumber;
     private String email;
 
     @Builder
-    public ContactDataDTO(String phoneNumber, String email) {
+    public ContactDataDTO(Long id, String phoneNumber, String email) {
+        this.id = id;
         this.phoneNumber = phoneNumber;
         this.email = email;
     }
