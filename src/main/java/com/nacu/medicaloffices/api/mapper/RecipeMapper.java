@@ -6,7 +6,7 @@ import com.nacu.medicaloffices.repositories.PatientRepository;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
-
+// comment
 @Mapper(
         uses = {MedicineMapper.class},
         componentModel = "spring"
