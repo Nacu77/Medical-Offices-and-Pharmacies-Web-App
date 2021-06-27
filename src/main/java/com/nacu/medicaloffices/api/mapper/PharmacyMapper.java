@@ -2,19 +2,23 @@ package com.nacu.medicaloffices.api.mapper;
 
 import com.nacu.medicaloffices.api.model.PharmacyDTO;
 import com.nacu.medicaloffices.domain.Pharmacy;
+import com.nacu.medicaloffices.repositories.PharmacyOwnerRepository;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Mapper(
         uses = {ContactDataMapper.class, AddressMapper.class, MedicineStockMapper.class},
         componentModel = "spring"
 )
-public interface PharmacyMapper {
-    PharmacyMapper INSTANCE = Mappers.getMapper(PharmacyMapper.class);
+public abstract class PharmacyMapper {
+
+    @Autowired
+    protected PharmacyOwnerRepository pharmacyOwnerRepository;
 
     @Mapping(source="pharmacyOwner.id", target="ownerId")
-    PharmacyDTO pharmacyToPharmacyDTO(Pharmacy pharmacy);
+    public abstract PharmacyDTO pharmacyToPharmacyDTO(Pharmacy pharmacy);
 
-    Pharmacy pharmacyDTOtoPharmacy(PharmacyDTO pharmacyDTO);
+    @Mapping(target = "pharmacyOwner", expression = "java(pharmacyOwnerRepository.findById(pharmacyDTO.getOwnerId()).get())")
+    public abstract Pharmacy pharmacyDTOtoPharmacy(PharmacyDTO pharmacyDTO);
 }

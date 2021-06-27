@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PharmacyOwnerRepository extends JpaRepository<PharmacyOwner, Long> {
+    PharmacyOwner findByLastName(String name);
 }
