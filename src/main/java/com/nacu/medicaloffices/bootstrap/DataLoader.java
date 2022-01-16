@@ -93,7 +93,7 @@ public class DataLoader implements CommandLineRunner {
         userRepository.save(
                 User.builder()
                         .username("admin77")
-                        .password(new BCryptPasswordEncoder().encode("FaCeSpuneBecali77"))
+                        .password(new BCryptPasswordEncoder().encode("admin77"))
                         .role(roleRepository.findByName("admin"))
                         .build()
         );
